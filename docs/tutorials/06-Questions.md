@@ -188,6 +188,8 @@ var input = document.QuerySelector<IHtmlInputElement>("input[type=file][name=myI
 input?.Files.Add(file);
 ```
 
+Depending on the webpage, you may also need to set `input.Value` to the name of the file, or alternatively set it in `SubmitAsync()`'s overload that accepts the form values. If your file-based form submission results in a `System.NullReferenceException` from `HtmlFormElement.SubmitAsync()`, that indicates that `input.Value` is what is missing.
+
 In the previously used example the file variable refers to any IFile instance. AngleSharp is a PCL does not come with a proper implementation out of the box, however, a simple one may look like:
 
 ```cs
